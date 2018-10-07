@@ -13,10 +13,10 @@ function sumator() {
   return { data };
 }
 
-const o = { a: 1 }
+const o = { a: 1 };
 
-const data = sumator()
+const data = sumator();
 
-const newData = data.add(10)
+const newData = data.add(10);
 
 console.log(data === newData);

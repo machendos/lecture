@@ -8,18 +8,16 @@ const object = {
   fn1: function incSum(a) {
     return a + object.data;
   },
-  sum: function(a, b) {
+  sum(a, b) {
     return a + b;
   },
   inc(a) {
     return ++a;
   },
-  max: (a, b) => {
-    return a > b ? a : b;
-  },
+  max: (a, b) => (a > b ? a : b),
   min: (a, b) => (a < b ? a : b),
   dec: a => --a,
-  
+
   [powName + 'w'](a, b) {
     return Math.pow(a, b);
   }

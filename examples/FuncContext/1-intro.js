@@ -1,11 +1,11 @@
 'use strict';
 
-let a = 1;
+const a = 1;
 const b = 2;
 
 const c = function() {
   const d = 3;
-  
+
 };
 
 c();
@@ -22,7 +22,7 @@ global {
 c {
   [[scope]] = global
 
-  
+
   d = 3
 }
 */

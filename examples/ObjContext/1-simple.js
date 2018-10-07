@@ -6,13 +6,13 @@ const object = {
   declaration: function incSum(a) {
     console.dir(this);
   },
-  expresion: function(a, b) {
+  expresion(a, b) {
     console.dir(this);
   },
   arrow: (a, b) => {
     console.dir(this);
   },
-}
+};
 
 object.declaration();
 object.expresion();

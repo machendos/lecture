@@ -7,7 +7,7 @@ const Context = function() {
     name: 'Kiev',
     year: 482,
 
-    f1: function() {
+    f1() {
       return this.name;
     },
 

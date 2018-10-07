@@ -2,9 +2,7 @@
 
 function secretPassword() {
   const password = 'xh38sk';
-  return guess => {
-    return guess === password;
-  };
+  return guess => guess === password;
 }
 
 const passwordGame = secretPassword();

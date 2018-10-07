@@ -1,0 +1,22 @@
+{
+  "name": "lecture",
+  "version": "1.0.0",
+  "description": "For lection in KPI",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/machendos/lecture.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/machendos/lecture/issues"
+  },
+  "homepage": "https://github.com/machendos/lecture#readme"
+}

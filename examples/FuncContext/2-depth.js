@@ -10,7 +10,7 @@ const f1 = () => {
 
   const f2 = () => {
     a = 100;
-    let b = 50;
+    const b = 50;
     console.dir({ a, b });
   };
 
