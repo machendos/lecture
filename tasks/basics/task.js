@@ -5,13 +5,12 @@ function makeArrayCopy(arr) {
 }
 function arrayDoDirty(arr, { sort, filter, shift, pop }) {
   const result = [];
-  if (sort) {
-    arr = arr.sort(sort);
-  }
+  if (sort) arr.sort(sort);
   if (filter) {
     let i = 0;
-    for (i in arr) {
-      if (!(filter(arr[i]))) arr.splice(i, 1);
+    for (i; i < arr.length;) {
+      if (filter(arr[i])) i++;
+      else arr.splice(i, 1);
     }
   }
   if (shift) {
@@ -30,10 +29,20 @@ function arrayDoClean(arr, { sort, filter, shift, pop }) {
   const array = makeArrayCopy(arr);
   return arrayDoDirty(array, { sort, filter, shift, pop });
 }
-class ArrayDo extends Array {
+class ArrayDoDirty extends Array {
   arrayDo({ sort, filter, shift, pop }) {
     const result = arrayDoDirty(this, { sort, filter, shift, pop });
-    return new ArrayDo(...result);
+    return new ArrayDoDirty(...result);
+  }
+  logToFile(filename) {
+    fs.writeFile(filename, this,
+      (error) => { if (error) throw error; });
+  }
+}
+class ArrayDoClean extends Array {
+  arrayDo({ sort, filter, shift, pop }) {
+    const result = arrayDoClean(this, { sort, filter, shift, pop });
+    return new ArrayDoClean(...result);
   }
   logToFile(filename) {
     fs.writeFile(filename, this,
