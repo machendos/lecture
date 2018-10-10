@@ -6,7 +6,7 @@ const b = 2;
 const f1 = () => {
   const d = 3;
 
-  console.dir({ a, b });
+  console.dir({ a, b, d });
 
   const f2 = () => {
     a = 100;
@@ -21,25 +21,23 @@ f1();
 
 console.dir({ a, b });
 
-/*
-global {
-  [[scope]]: null
+// global {
+//   [[scope]]: null
 
-  a = 1 (after L12 will be 100)
-  b = 2
-  f1 = <Func>
-}
+//   a = 1 (after L12 will be 100)
+//   b = 2
+//   f1 = <Func>
+// }
 
-f1 {
-  [[scope]] = global
+// f1 {
+//   [[scope]] = global
 
-  d = 3
-  f2 = <Func>
-}
+//   d = 3
+//   f2 = <Func>
+// }
 
-f2 {
-  [[scope]] = f1
+// f2 {
+//   [[scope]] = f1
 
-  b = 50
-}
-*/
+//   b = 50
+// }

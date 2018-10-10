@@ -13,7 +13,7 @@ const sum2 = function(a, b) {
 };
 
 // Arrow function
-const sum3 = () => {
+const sum3 = (a, b) => {
   const sum = a + b;
   return sum;
 };

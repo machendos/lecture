@@ -31,4 +31,4 @@ console.log(object.max(3, 9));
 console.log(object.min(8, 10));
 console.log(object.dec(8));
 
-console.log(object['p' + 'o' + 'w'](2, 2));
+console.log(object['pow'](2, 2));

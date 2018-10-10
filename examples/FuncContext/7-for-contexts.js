@@ -2,8 +2,7 @@
 
 const result = [];
 
-let i;
-for (; i < 4; i++) {
+for (let i; i < 4; i++) {
   console.log(1);
   result[i] = () => console.log(i);
 }
