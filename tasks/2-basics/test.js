@@ -83,7 +83,6 @@ if (solve.AdvancedArray) {
     };
     equal([ {} ], arr.unsideTransform(arr, options));
   }
-
   if (Advanced.prototype.sideTransform) {
     equal([5, 1], arr.sideTransform(arr, options));
 

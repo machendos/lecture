@@ -7,7 +7,7 @@
     "example": "examples"
   },
   "scripts": {
-    "test": "eslint ."
+    "test": "eslint . && node tasks/2-basics/test.js"
   },
   "repository": {
     "type": "git",
