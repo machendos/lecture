@@ -3,11 +3,8 @@
 const fs = require('fs');
 
 const collection = {
-  sort: (arg1, arg2) => {
-    if (arg1 > arg2) return 1;
-    if (arg1 < arg2) return -1;
-    if (arg1 === arg2) return 0;
-  },
+  sort: (arg1, arg2) => (arg1 > arg2 ? 1 : (arg1 < arg2 ? -1 : 0)),
+  filter: (el) => (el <= 11 ? false : true),
   shift: true,
   pop: true
 };
@@ -18,6 +15,7 @@ class ArrayAdvanced extends Array {
   }
   specialSort(collection) {
     if (collection.sort) this.sort(collection.sort);
+    if (collection.filter) this.splice(0, Infinity, ...this.filter(collection.filter));
     if (collection.shift) this.shift();
     if (collection.pop) this.pop();
     return this;
@@ -33,4 +31,3 @@ class ArrayAdvanced extends Array {
 const filtred = new ArrayAdvanced(4, 7, 12, 16, 90, 0, 567, 400, 123, 657);
 filtred.specialSort(collection);
 filtred.log();
-
