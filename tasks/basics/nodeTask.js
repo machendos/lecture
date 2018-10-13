@@ -21,13 +21,12 @@ class ArrayAdvanced extends Array {
     return this;
   }
   log() {
-    fs.writeFile('log.json', JSON.stringify(this), 'utf-8', err => {
-      if (err) throw err;
-      console.log(`Array logged to log.son file: ${this}`);
-    })
+    fs.writeFileSync('log.json', JSON.stringify(this), 'utf-8');
+    console.log(`Sync write to log.json: ${this}.`)
   }
 }
 
-const filtred = new ArrayAdvanced(4, 7, 12, 16, 90, 0, 567, 400, 123, 657);
-filtred.specialSort(collection);
-filtred.log();
+const numbers = new ArrayAdvanced(4, 7, 12, 16, 90, 0, 567, 400, 123, 657);
+numbers
+  .specialSort(collection)
+  .log();
