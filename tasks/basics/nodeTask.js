@@ -15,7 +15,7 @@ class ArrayAdvanced extends Array {
   }
   specialSort(collection) {
     if (collection.sort) this.sort(collection.sort);
-    if (collection.filter) this.splice(0, Infinity, ...this.filter(collection.filter));
+    if (collection.filter) this.splice(0, this.length, ...this.filter(collection.filter));
     if (collection.shift) this.shift();
     if (collection.pop) this.pop();
     return this;
