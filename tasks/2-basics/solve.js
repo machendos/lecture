@@ -1,8 +1,13 @@
 'use strict';
 
+const fs = require('fs');
+
 module.exports.wrapper = fn => (arr, obj) => {
   const res = fn(arr, obj);
-  console.log(`Transformed array: [${arr.join(', ')}]`);
+  const message = `Transformed array: [${arr.join(', ')}]`;
+  fs.writeFile('TransformedArray.txt', message, err => {
+    if (err) console.log(err);
+  });
   return res;
 };
 
@@ -10,7 +15,7 @@ module.exports.unsideTransform = function(arr, obj) {
   let res = [];
   arr = arr.slice();
   if (obj.sort) arr.sort(obj.sort);
-  if (obj.filter) arr.filter(obj.filter);
+  if (obj.filter) arr = arr.filter(obj.filter);
   if (obj.shift) res.unshift(arr.shift());
   if (obj.pop) res.push(arr.pop());
   res = res.filter(el =>  el !== undefined);
@@ -35,7 +40,10 @@ class AdvancedArray extends Array {
   wrapper(method) {
     const wrapped = function(obj) {
       const res = method.call(this, obj);
-      console.log(`Transformed array: [${this.join(', ')}]`);
+      const message = `Transformed array: [${this.join(', ')}]`;
+      fs.writeFile('TransformedArray.txt', message, err => {
+        if (err) console.log(err);
+      });
       return res;
     };
     return wrapped.bind(this);
@@ -43,9 +51,9 @@ class AdvancedArray extends Array {
 
   unsideTransform(obj) {
     let res = [];
-    const arr = this.slice();
+    let arr = this.slice();
     if (obj.sort) arr.sort(obj.sort);
-    if (obj.filter) arr.filter(obj.filter);
+    if (obj.filter) arr = arr.filter(obj.filter);
     if (obj.shift) res.unshift(arr.shift());
     if (obj.pop) res.push(arr.pop());
     res = res.filter(el =>  el !== undefined);
@@ -78,11 +86,11 @@ module.exports.AdvancedArray.prototype.sideTransform = AdvancedArray
 // const arr = new AdvancedArray(1, 2, 3, 4, 5);
 // const options = {
 //   sort: () => 1,
-//   filter: el => el,
+//   filter: el => el > 3,
 //   pop: true,
 //   shift: true
 // };
-// const wrap = arr.wrapper(arr.unsideTransform)(options);
+// const wrap = arr.wrapper(arr.unsideTransform);
 // const res = wrap(options);
 // console.log(res);
 // console.log(arr);
