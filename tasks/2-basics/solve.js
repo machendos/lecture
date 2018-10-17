@@ -8,9 +8,9 @@ module.exports.wrapper = fn => (arr, obj) => {
 
 module.exports.unsideTransform = function(arr, obj) {
   let res = [];
-  arr = arr.slice(0);
-  if (obj.sort) arr = arr.sort(obj.sort);
-  if (obj.filter) arr = arr.filter(obj.filter);
+  arr = arr.slice();
+  if (obj.sort) arr.sort(obj.sort);
+  if (obj.filter) arr.filter(obj.filter);
   if (obj.shift) res.unshift(arr.shift());
   if (obj.pop) res.push(arr.pop());
   res = res.filter(el =>  el !== undefined);
@@ -19,7 +19,7 @@ module.exports.unsideTransform = function(arr, obj) {
 
 module.exports.sideTransform = function(arr, obj) {
   let res = [];
-  if (obj.sort) arr = arr.sort(obj.sort);
+  if (obj.sort) arr.sort(obj.sort);
   if (obj.filter) {
     arr.forEach((element, i) => {
       if (!obj.filter(element)) arr.splice(i, 1);
@@ -43,10 +43,9 @@ class AdvancedArray extends Array {
 
   unsideTransform(obj) {
     let res = [];
-    let arr = this;
-    arr = arr.slice(0);
-    if (obj.sort) arr = arr.sort(obj.sort);
-    if (obj.filter) arr = arr.filter(obj.filter);
+    const arr = this.slice();
+    if (obj.sort) arr.sort(obj.sort);
+    if (obj.filter) arr.filter(obj.filter);
     if (obj.shift) res.unshift(arr.shift());
     if (obj.pop) res.push(arr.pop());
     res = res.filter(el =>  el !== undefined);
@@ -55,15 +54,14 @@ class AdvancedArray extends Array {
 
   sideTransform(obj) {
     let res = [];
-    let arr = this;
-    if (obj.sort) arr = arr.sort(obj.sort);
+    if (obj.sort) this.sort(obj.sort);
     if (obj.filter) {
-      arr.forEach((element, i) => {
-        if (!obj.filter(element)) arr.splice(i, 1);
+      this.forEach((element, i) => {
+        if (!obj.filter(element)) this.splice(i, 1);
       });
     }
-    if (obj.shift) res.unshift(arr.shift());
-    if (obj.pop) res.push(arr.pop());
+    if (obj.shift) res.unshift(this.shift());
+    if (obj.pop) res.push(this.pop());
     res = res.filter(el => el !== undefined);
     return res;
   }
