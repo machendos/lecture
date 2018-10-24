@@ -37,6 +37,9 @@ module.exports.sideTransform = function(arr, obj) {
 };
 
 class AdvancedArray extends Array {
+  constructor(...args) {
+    super(...args);
+  }
   wrapper(method) {
     const wrapped = function(obj) {
       const res = method.call(this, obj);
