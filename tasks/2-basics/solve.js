@@ -80,12 +80,6 @@ class AdvancedArray extends Array {
 
 module.exports.AdvancedArray = AdvancedArray;
 
-module.exports.AdvancedArray.prototype.unsideTransform = AdvancedArray
-  .prototype.unsideTransform;
-
-module.exports.AdvancedArray.prototype.sideTransform = AdvancedArray
-  .prototype.sideTransform;
-
 // const arr = new AdvancedArray(1, 2, 3, 4, 5);
 // const options = {
 //   sort: () => 1,
